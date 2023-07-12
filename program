@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="canvas" width="2000" height="2000"></canvas>
+    <script>
+
+        let a = +prompt("Введіть сторону квадрата");
+        while (isNaN(a) || a == "" || a == null ||  0 > a || a > 1000) {
+            a = +prompt("Введіть сторону квадрата");
+        }
+        
+        let topX = +prompt("Введіть першу координату вершини квадрату");
+        while (isNaN(topX) || topX == "" || topX == null || 0 > topX || topX > 1000) {
+            
+            if (topX === 0) {
+                break;
+            } else {
+                topX = +prompt("Введіть першу координату вершини квадрату");
+            }
+            
+        }
+
+        let topY = +prompt("Введіть другу координату вершини квадрату");
+        while (isNaN(topY) || topY == "" || topY == null || 0 > topY || topY > 1000) {
+            
+            if (topY === 0) {
+                break;
+            } else {
+            topY = +prompt("Введіть другу координату вершини квадрату");
+            }
+
+        }
+
+        let x = +prompt("Введіть координату (x)");
+        while (isNaN(x) || x == "" || x == null || 0 > x || x > 1000) {
+           
+            if (x === 0) {
+                break;
+            } else {
+            x = +prompt("Введіть координату (x)");
+            }
+
+        }
+
+        let y = +prompt("Введіть координату (y)");
+        while (isNaN(y) || y == "" || y == null || 0 > y || y > 1000) {
+
+            if (y === 0) {
+                break;
+            } else {
+            y = +prompt("Введіть координату (y)");
+            }
+
+        }
+
+        let canvas = document.getElementById("canvas");
+        let ctx = canvas.getContext("2d");
+        
+        ctx.fillStyle = "yellow";
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(topX, topY);
+
+        ctx.lineTo(topX + a, topY);
+        ctx.lineTo(topX + a, topY + a);
+        ctx.lineTo(topX, topY + a);
+        ctx.lineTo(topX, topY);
+        ctx.fill();
+        
+        ctx.fillStyle = "blue";
+        ctx.fillRect(x,y,1,1);
+        
+        if ((topX + a) >= x && x >= topX && (topY + a) >= y && y >= topY) {
+            alert("Точка належить квадрату");
+        } else {
+            alert("Точка не належить квадрату");
+        }
+
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</body>
+</html>
